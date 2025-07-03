@@ -15,8 +15,8 @@ if st.button("Run Analysis"):
     results = []
     for i in range(20, len(df) - 7):
         today, prev, future = df.iloc[i], df.iloc[i-1], df.iloc[i+7]
-        vol_ok = today["Volume"] > volume_factor * today["20d_avg_volume"]
-        pct = (future["Close"] - today["Close"]) / today["Close"] * 100
+        vol_ok = float(today["Volume"]) > volume_factor * float(today["20d_avg_volume"])
+        pct = (float(future["Close"]) - float(today["Close"])) / float(today["Close"]) * 100
         pattern = None
 
         if prev["Close"] < prev["Open"] and today["Close"] > today["Open"] \
